@@ -14,7 +14,7 @@ energy = ctrl.Antecedent(np.arange(0, 1, 0.1), 'energy')
 dist_to_base = ctrl.Antecedent(np.arange(0, 150, 10), 'dist_to_base')
 comp_radius = ctrl.Consequent(np.arange(0, 120, 1), 'comp_radius')
 
-# Auto-membership function population is possible with .automf(3, 5, or 7)
+# Custom membership functions are built interactively with a Pythonic API
 energy['low'] = fuzz.trapmf(energy.universe, [-2, -1, 0.1, 0.5])
 energy['medium'] = fuzz.trimf(energy.universe, [0, 0.5, 1])
 energy['high'] =  fuzz.trapmf(energy.universe, [0.5, 0.9, 1.2, 1.4])
