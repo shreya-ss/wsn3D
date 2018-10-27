@@ -34,7 +34,7 @@ comp_radius['large'] = fuzz.trimf(comp_radius.universe, [60, 85, 90])
 comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [80, 95, 100, 120])
 
 
-# You can see how these look with .view()
+# To see how these look with .view()
 energy.view()
 
 dist_to_base.view()
