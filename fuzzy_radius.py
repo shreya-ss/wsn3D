@@ -34,7 +34,7 @@ comp_radius['medium'] = fuzz.trimf(comp_radius.universe, [20, 40, 60])
 comp_radius['medium large'] = fuzz.trimf(comp_radius.universe, [40, 50, 60])
 comp_radius['rather large'] = fuzz.trimf(comp_radius.universe, [60, 70, 80])
 comp_radius['large'] = fuzz.trimf(comp_radius.universe, [60, 85, 90])
-comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [80, 95, 100, 120])
+comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [80, 95, 125, 130])
 
 
 # You can see how these look with .view()
