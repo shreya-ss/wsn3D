@@ -12,12 +12,21 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 #Number of sensor nodes deployed
-N = 1000                    
+N = 1000      
+E = 1        
+l = 200
+b = 200
+h = 10      
 
-#Random distribution of sensor nodes in a volume of 200*200*200
-x = np.random.uniform(low=0, high=201, size=N)
-y = np.random.uniform(low=0, high=201, size=N)
-z = np.random.uniform(low=0, high=201, size=N)
+#Random distribution of sensor nodes in a volume of l*b*h
+x = np.random.uniform(low=0, high=l, size=N)
+y = np.random.uniform(low=0, high=b, size=N)
+z = np.random.uniform(low=0, high=h, size=N)
+
+#Position of Base Station
+bs_x = 100
+bs_y = 100
+bs_z = 5
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -28,4 +37,14 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
 ax.scatter(x,y,z)
+ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
+
+#Sensor nodes with their corresponding energy
+pos = np.dstack((x,y,z))
+pos_e = {tuple(pos[0][i]):E for i in range(0,N)}      #list(pos_e.keys())[0] : To acces at 0th index
+
+#Distance of each sensor node from base station
+dist = (((pos[:,:,0]-bs_x)**2 + (pos[:,:,1]-bs_y)**2 + (pos[:,:,2]-bs_z)**2)**1/2).flatten()
+ener = np.full((1000), E)
+
 
