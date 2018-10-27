@@ -14,7 +14,7 @@ energy = ctrl.Antecedent(np.arange(0, 1, 0.1), 'energy')
 dist_to_base = ctrl.Antecedent(np.arange(0, 150, 10), 'dist_to_base')
 comp_radius = ctrl.Consequent(np.arange(0, 120, 1), 'comp_radius')
 
-# Auto-membership function population is possible with .automf(3, 5, or 7)
+# Custom membership functions are built interactively with a Pythonic API
 energy['low'] = fuzz.trapmf(energy.universe, [-2, -1, 0.1, 0.5])
 energy['medium'] = fuzz.trimf(energy.universe, [0, 0.5, 1])
 energy['high'] =  fuzz.trapmf(energy.universe, [0.5, 0.9, 1.2, 1.4])
@@ -23,9 +23,6 @@ dist_to_base['close'] = fuzz.trapmf(dist_to_base.universe, [-2, -1, 10, 50] )
 dist_to_base['medium'] = fuzz.trimf(dist_to_base.universe, [0, 50, 100])
 dist_to_base['far'] = fuzz.trapmf(dist_to_base.universe, [50, 90, 130, 145])
 
-
-# Custom membership functions can be built interactively with a familiar,
-# Pythonic API
 comp_radius['very small'] = fuzz.trapmf(comp_radius.universe, [-2, -1, 5, 10])
 comp_radius['small'] = fuzz.trimf(comp_radius.universe, [0, 10, 20])
 comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [10, 15, 20])
@@ -37,7 +34,7 @@ comp_radius['large'] = fuzz.trimf(comp_radius.universe, [60, 85, 90])
 comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [80, 95, 125, 130])
 
 
-# You can see how these look with .view()
+# To see how these look with .view()
 energy.view()
 
 dist_to_base.view()
