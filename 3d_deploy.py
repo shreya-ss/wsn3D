@@ -44,7 +44,7 @@ pos = np.dstack((x,y,z))
 pos_e = {tuple(pos[0][i]):E for i in range(0,N)}      #list(pos_e.keys())[0] : To acces at 0th index
 
 #Distance of each sensor node from base station
-dist = ((x-bs_x)**2 + (y-bs_y)**2 + (z-bs_z)**2)**1/2
+dist = ((x-bs_x)**2 + (y-bs_y)**2 + (z-bs_z)**2)**(1/2)
 ener = np.full((1000), E)
 
 
