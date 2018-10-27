@@ -23,9 +23,6 @@ dist_to_base['close'] = fuzz.trapmf(dist_to_base.universe, [-2, -1, 10, 50] )
 dist_to_base['medium'] = fuzz.trimf(dist_to_base.universe, [0, 50, 100])
 dist_to_base['far'] = fuzz.trapmf(dist_to_base.universe, [50, 90, 130, 145])
 
-
-# Custom membership functions can be built interactively with a familiar,
-# Pythonic API
 comp_radius['very small'] = fuzz.trapmf(comp_radius.universe, [-2, -1, 5, 10])
 comp_radius['small'] = fuzz.trimf(comp_radius.universe, [0, 10, 20])
 comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [10, 15, 20])
