@@ -25,7 +25,7 @@ dist_to_base['far'] = fuzz.trapmf(dist_to_base.universe, [50, 90, 130, 145])
 
 comp_radius['very small'] = fuzz.trapmf(comp_radius.universe, [-2, -1, 2.5, 5])
 comp_radius['small'] = fuzz.trimf(comp_radius.universe, [0, 5, 10])
-comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [5, 7.5, 10])
+comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [5, 7, 10])
 comp_radius['medium small'] = fuzz.trimf(comp_radius.universe, [10, 15, 20])
 comp_radius['medium'] = fuzz.trimf(comp_radius.universe, [10, 20, 30])
 comp_radius['medium large'] = fuzz.trimf(comp_radius.universe, [20, 25, 30])
