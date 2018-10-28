@@ -13,10 +13,11 @@ from mpl_toolkits.mplot3d import Axes3D
 
 #Number of sensor nodes deployed
 N = 200      
-E = 1        
+E = 1.0        
 l = 200
 b = 200
 h = 10      
+d_count = 0
 
 #Random distribution of sensor nodes in a volume of l*b*h
 x = np.random.uniform(low=0, high=l, size=N)
@@ -45,6 +46,6 @@ pos_e = {tuple(pos[0][i]):E for i in range(0,N)}      #list(pos_e.keys())[0] : T
 
 #Distance of each sensor node from base station
 dist = ((x-bs_x)**2 + (y-bs_y)**2 + (z-bs_z)**2)**(1/2)
-ener = np.full((1000), E)
+ener = np.full((N), E)
 
 
