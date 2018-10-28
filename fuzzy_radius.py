@@ -1,16 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 27 22:49:51 2018
-
-@author: shreya
-"""
 
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 
 # New Antecedent/Consequent objects hold universe variables and membership functions
-energy = ctrl.Antecedent(np.arange(0, 1.1, 0.1), 'energy')
+energy = ctrl.Antecedent(np.arange(0, 1, 0.1), 'energy')
 dist_to_base = ctrl.Antecedent(np.arange(0, 150, 10), 'dist_to_base')
 comp_radius = ctrl.Consequent(np.arange(0, 61, 1), 'comp_radius')
 
@@ -37,7 +31,9 @@ comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [40, 47, 62, 65])
 # To see how these look with .view()
 #energy.view()
 
-##comp_radius.view()
+#dist_to_base.view()
+
+#comp_radius.view()
 
 rule1 = ctrl.Rule(energy['low'] & dist_to_base['close'], comp_radius['very small'])
 rule2 = ctrl.Rule(energy['medium'] & dist_to_base['close'], comp_radius['small'])
@@ -56,13 +52,7 @@ radius = ctrl.ControlSystemSimulation(radius_ctrl)
 
 # Pass inputs to the ControlSystem using Antecedent labels with Pythonic API
 # Note: if you like passing many inputs all at once, use .inputs(dict_of_data)
-"""
-radius.input['energy'] = 0.29
-radius.input['dist_to_base'] = 99.30
-"""
 
-# Crunch the numbers
-#radius.compute()
 
-#print(radius.output['tip'])
-##comp_radius.view(sim=radius)
+
+#comp_radius.view(sim=radius)
