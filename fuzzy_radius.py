@@ -35,11 +35,9 @@ comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [40, 47, 62, 65])
 
 
 # To see how these look with .view()
-energy.view()
+#energy.view()
 
-dist_to_base.view()
-
-comp_radius.view()
+##comp_radius.view()
 
 rule1 = ctrl.Rule(energy['low'] & dist_to_base['close'], comp_radius['very small'])
 rule2 = ctrl.Rule(energy['medium'] & dist_to_base['close'], comp_radius['small'])
@@ -58,12 +56,13 @@ radius = ctrl.ControlSystemSimulation(radius_ctrl)
 
 # Pass inputs to the ControlSystem using Antecedent labels with Pythonic API
 # Note: if you like passing many inputs all at once, use .inputs(dict_of_data)
+"""
 radius.input['energy'] = 0.29
 radius.input['dist_to_base'] = 99.30
+"""
 
 # Crunch the numbers
-radius.compute()
+#radius.compute()
 
-print(radius.output['comp_radius'])
-comp_radius.view(sim=radius)
-
+#print(radius.output['tip'])
+##comp_radius.view(sim=radius)
