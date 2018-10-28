@@ -10,9 +10,9 @@ import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 
 # New Antecedent/Consequent objects hold universe variables and membership functions
-energy = ctrl.Antecedent(np.arange(0, 1, 0.1), 'energy')
+energy = ctrl.Antecedent(np.arange(0, 1.1, 0.1), 'energy')
 dist_to_base = ctrl.Antecedent(np.arange(0, 150, 10), 'dist_to_base')
-comp_radius = ctrl.Consequent(np.arange(0, 120, 1), 'comp_radius')
+comp_radius = ctrl.Consequent(np.arange(0, 61, 1), 'comp_radius')
 
 # Custom membership functions are built interactively with a Pythonic API
 energy['low'] = fuzz.trapmf(energy.universe, [-2, -1, 0.1, 0.5])
@@ -23,15 +23,15 @@ dist_to_base['close'] = fuzz.trapmf(dist_to_base.universe, [-2, -1, 10, 50] )
 dist_to_base['medium'] = fuzz.trimf(dist_to_base.universe, [0, 50, 100])
 dist_to_base['far'] = fuzz.trapmf(dist_to_base.universe, [50, 90, 130, 145])
 
-comp_radius['very small'] = fuzz.trapmf(comp_radius.universe, [-2, -1, 5, 10])
-comp_radius['small'] = fuzz.trimf(comp_radius.universe, [0, 10, 20])
-comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [10, 15, 20])
-comp_radius['medium small'] = fuzz.trimf(comp_radius.universe, [20, 30, 40])
-comp_radius['medium'] = fuzz.trimf(comp_radius.universe, [20, 40, 60])
-comp_radius['medium large'] = fuzz.trimf(comp_radius.universe, [40, 50, 60])
-comp_radius['rather large'] = fuzz.trimf(comp_radius.universe, [60, 70, 80])
-comp_radius['large'] = fuzz.trimf(comp_radius.universe, [60, 85, 90])
-comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [80, 95, 125, 130])
+comp_radius['very small'] = fuzz.trapmf(comp_radius.universe, [-2, -1, 2.5, 5])
+comp_radius['small'] = fuzz.trimf(comp_radius.universe, [0, 5, 10])
+comp_radius['rather small'] = fuzz.trimf(comp_radius.universe, [5, 7, 10])
+comp_radius['medium small'] = fuzz.trimf(comp_radius.universe, [10, 15, 20])
+comp_radius['medium'] = fuzz.trimf(comp_radius.universe, [10, 20, 30])
+comp_radius['medium large'] = fuzz.trimf(comp_radius.universe, [20, 25, 30])
+comp_radius['rather large'] = fuzz.trimf(comp_radius.universe, [30, 35, 40])
+comp_radius['large'] = fuzz.trimf(comp_radius.universe, [30, 42, 45])
+comp_radius['very large'] = fuzz.trapmf(comp_radius.universe, [40, 47, 62, 65])
 
 
 # To see how these look with .view()
@@ -58,8 +58,8 @@ radius = ctrl.ControlSystemSimulation(radius_ctrl)
 
 # Pass inputs to the ControlSystem using Antecedent labels with Pythonic API
 # Note: if you like passing many inputs all at once, use .inputs(dict_of_data)
-radius.input['energy'] = 0.2
-radius.input['dist_to_base'] = 120
+radius.input['energy'] = 0.29
+radius.input['dist_to_base'] = 99.30
 
 # Crunch the numbers
 radius.compute()
