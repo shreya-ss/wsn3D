@@ -1,6 +1,6 @@
 import numpy as np
-#import matplotlib.pyplot as plt
-#from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from fuzzy_radius import *
 from random import *
 
@@ -21,7 +21,7 @@ bs_x = 100
 bs_y = 100
 bs_z = 5
 
-'''fig = plt.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
 #Axis labels set
@@ -31,7 +31,12 @@ ax.set_zlabel('Z')
 fig.suptitle(' Fig 1. Random Deployment of Sensor Nodes',fontsize=20,color='c')
 ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500,label='Deploy')
 ax.scatter(x,y,z,c='b',label='Deploy')
-'''
+figManager = plt.get_current_fig_manager()
+figManager.window.showMaximized()
+'''for angle in range(0, 360):
+    ax.view_init(30, angle)
+    plt.draw()
+    plt.pause(.001)'''
 
 #Sensor nodes with their corresponding energy
 pos = np.dstack((x,y,z))
@@ -120,16 +125,5 @@ for k in range(0,20):
                 dis = ((x[i]-CH_x)**2 + (y[i]-CH_y)**2 + (z[i]-CH_z)**2)**(1/2)
                 e = e - (( 51200 * (10 ** (-9)) ) + ( 102400 * (10 ** (-12)) * (dis ** 2)))
                 ener[i] = e
-'''fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-#Axis labels set
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-fig.suptitle(' Fig 2. CH AFTER 10 ROUNDS',fontsize=20,color='c')
-ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500,label='Deploy')
-ax.scatter(x,y,z,c='b',label='Deploy')
-ax.scatter(x_dup,y_dup,z_dup, c='r', marker='*',label='Deploy',s=150)'''
 from EnergyUpdate import energy_update
 energy_update(x,y,z,ener,N)
