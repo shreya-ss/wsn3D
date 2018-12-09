@@ -3,14 +3,13 @@
 #Input : x= X_cordinates, y=Y_cordinates, z= Z_cordinates, N= Number of nodes, ener=Energies of nodes
 
 import numpy as np
-#import matplotlib.pyplot as plt
-#from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from fuzzy_radius import *
 from random import *
-
-
+flg=1
 def Energy_Aware_Clustering(x,y,z,N,ener):
-    
+    global flg
     bs_x = 100
     bs_y = 100
     bs_z = 5
@@ -53,27 +52,40 @@ def Energy_Aware_Clustering(x,y,z,N,ener):
             y_dup.append(y[tentative_CH[x1]])
             z_dup.append(z[tentative_CH[x1]])
             final_comp_r.append(comp_rad[x1])
-    #fig = plt.figure()
-    #ax = fig.add_subplot(111, projection='3d')
-    #ax.set_xlim([0,220])
-    #ax.set_ylim([0,220])
-    #ax.set_zlim([0,12])
-#Axis labels set
-    """
-    show(ax,x_dup,y_dup,z_dup,final_comp_r)
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Z')
-    ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
-    ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
-    ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
-    ax.scatter(x,y,z,c='b')
-    ax.scatter(x,y,z,c='b')
-    ax.scatter(x,y,z,c='b')
-    ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
-    ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
-    ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
-    """
+    
+    if(flg==1):
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        #Axis labels set
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_zlabel('Z')
+        fig.suptitle(' Fig 2. Energy Aware Clustering',fontsize=20,color='c')
+        ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500,label='Deploy')
+        ax.scatter(x,y,z,c='b',label='Deploy')
+        ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
+        figManager = plt.get_current_fig_manager()
+        figManager.window.showMaximized()
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        fig.suptitle(' Fig 3. Spherical 3D View of Energy Aware Clustering',fontsize=20,color='c')
+        from Show_Graph import show
+        show(ax,x_dup,y_dup,z_dup,final_comp_r)
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_zlabel('Z')
+        ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
+        ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
+        ax.scatter(bs_x, bs_y, bs_z, c='r', marker='^', s=500)
+        ax.scatter(x,y,z,c='b')
+        ax.scatter(x,y,z,c='b')
+        ax.scatter(x,y,z,c='b')
+        ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
+        ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
+        ax.scatter(x_dup,y_dup,z_dup,c='r', marker='*', s=150)
+        figManager = plt.get_current_fig_manager()
+        figManager.window.showMaximized()
+        flg=0
     
     return final_CH
     
