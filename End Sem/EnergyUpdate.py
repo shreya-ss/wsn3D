@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from EnergyAwareClustering import Energy_Aware_Clustering
-def energy_update(x,y,z,ener,N):
-    
+flg=1
+def energy_update(x,y,z,ener,N):   
     bs_x = 100
     bs_y = 100
     bs_z = 5
-    
+    global flg
     #total dead nodes yet
     d_count=0
     #round of transmissions for each node before dying
@@ -17,8 +17,7 @@ def energy_update(x,y,z,ener,N):
     
     while((d_count)<N):
         #Selection of Energy aware clustering and clusters
-        Cluster_Head=Energy_Aware_Clustering(x,y,z,N,ener)
-        
+        Cluster_Head=Energy_Aware_Clustering(x,y,z,N,ener)  
         #to check whether a node is Ch
         is_CH=[]
         
